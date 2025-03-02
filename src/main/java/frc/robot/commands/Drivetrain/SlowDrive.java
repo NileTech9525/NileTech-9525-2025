@@ -21,18 +21,16 @@ public class SlowDrive extends Command {
   }
 
   @Override
-  public void initialize() {
-    drivetrain.stop(0, 0);
-  }
+  public void initialize() {}
 
   @Override
   public void execute() { 
-    drivetrain.arcadeDrive(driverController.getLeftY() * DrivetrainConstants.kSlowDriveSpeed, driverController.getRightX() * DrivetrainConstants.kSlowDriveSpeed);
+    drivetrain.arcadeDrive(-driverController.getLeftY() * DrivetrainConstants.kSlowDriveSpeed, -driverController.getRightX() * DrivetrainConstants.kSlowDriveSpeed);
   }
 
   @Override
   public void end(boolean interrupted) {
-    drivetrain.stop(0, 0);
+    drivetrain.stop();
   }
 
   @Override
