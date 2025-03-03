@@ -12,6 +12,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ElevatorConstants;
 
 public class Elevator extends SubsystemBase {
@@ -37,12 +38,19 @@ public class Elevator extends SubsystemBase {
     leaderConfig.inverted(false);
     leaderConfig.smartCurrentLimit(ElevatorConstants.kElevatorSafetyLimits);
     leaderConfig.idleMode(IdleMode.kBrake);
+    leaderConfig.softLimit.forwardSoftLimit(ElevatorConstants.kMaxPosition);
+    leaderConfig.softLimit.reverseSoftLimit(ElevatorConstants.kMinPosition);
+    leaderConfig.softLimit.forwardSoftLimitEnabled(true);
+    leaderConfig.softLimit.reverseSoftLimitEnabled(true);
+    leaderConfig.voltageCompensation(DrivetrainConstants.KVoltage);
+    leaderConfig.openLoopRampRate(ElevatorConstants.kOpenRateLimit);
     elevatorLeader.configure(leaderConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
 
     SparkMaxConfig followerConfig = new SparkMaxConfig();
     followerConfig.inverted(true);
     followerConfig.smartCurrentLimit(ElevatorConstants.kElevatorSafetyLimits);
     followerConfig.idleMode(IdleMode.kBrake);
+    followerConfig.voltageCompensation(DrivetrainConstants.KVoltage);
     elevatorFollower.configure(followerConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
           
     SmartDashboard.putNumber("Elevator kP", Constants.ElevatorConstants.kP);
@@ -57,6 +65,7 @@ public class Elevator extends SubsystemBase {
 
   public void moveElevator(double speed) {
     elevatorLeader.set(speed);
+    elevatorFollower.set(-speed);
   }
 
   public double getPosition() {

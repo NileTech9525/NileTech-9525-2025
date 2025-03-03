@@ -15,21 +15,23 @@ public final class Constants {
     public static final int kLeftFrontID = 1;
     public static final int kRightRearID = 4;
     public static final int kRightFrontID = 3;
-    public static final int kDrivetrainSafetyLimits = 60;
+    public static final int kDrivetrainSafetyLimits = 45;
     public static final double kSlowDriveSpeed = 0.6;
+    public static final double KVoltage = 12.0;
+    public static final double kDriveOpenRateLimit = 0.2;
   }
 
   public static class CoralConstants {
     public static final int kCoralID = 5;
-    public static final int kCoralSafetyLimits = 60;
+    public static final int kCoralSafetyLimits = 35;
     public static final double kCoralSpeed = 0.5;
   }
 
   public static class ElevatorConstants {
     public static final int kLeaderID = 6;
     public static final int kFollowerID = 7;
-    public static final int kElevatorSafetyLimits = 60;
-    public static final double KElevatorSpeed = 1;
+    public static final int kElevatorSafetyLimits = 45;
+    public static final double KElevatorSpeed = 1.0;
     
     public static final double kPIDTolerance = 0.7;
     public static final double kP = 0.5;
@@ -44,6 +46,7 @@ public final class Constants {
     public static final double kMaxPosition = -58.0;
     public static final double kMaxVelocity = 0.5;
     public static final double kMaxAcceleration = 3.0;
+    public static final double kOpenRateLimit = 0.7;
   }
 
   public static class ClawConstants {

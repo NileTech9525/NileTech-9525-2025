@@ -8,6 +8,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClawConstants;
+import frc.robot.Constants.DrivetrainConstants;
 
 
 public class Claw extends SubsystemBase {
@@ -20,6 +21,7 @@ public class Claw extends SubsystemBase {
     clawRightConfig
       .inverted(false)
       .smartCurrentLimit(ClawConstants.kClawSafetyLimits)
+      .voltageCompensation(DrivetrainConstants.KVoltage)
       .idleMode(IdleMode.kBrake); 
 
       SparkMaxConfig clawLeftConfig = new SparkMaxConfig();
@@ -27,6 +29,7 @@ public class Claw extends SubsystemBase {
     clawLeftConfig
       .inverted(true)
       .smartCurrentLimit(ClawConstants.kClawSafetyLimits)
+      .voltageCompensation(DrivetrainConstants.KVoltage)
       .idleMode(IdleMode.kBrake); 
   }
 

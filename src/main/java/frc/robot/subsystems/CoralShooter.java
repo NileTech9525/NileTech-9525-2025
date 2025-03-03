@@ -13,6 +13,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CoralConstants;
+import frc.robot.Constants.DrivetrainConstants;
 
 public class CoralShooter extends SubsystemBase {
   private final SparkMax coralShooter = new SparkMax(CoralConstants.kCoralID, MotorType.kBrushed);
@@ -22,6 +23,7 @@ public class CoralShooter extends SubsystemBase {
     coralConfig.inverted(false); // Adjust based on motor direction
     coralConfig.smartCurrentLimit(CoralConstants.kCoralSafetyLimits);
     coralConfig.idleMode(IdleMode.kBrake); // Typically set to brake for elevators
+    coralConfig.voltageCompensation(DrivetrainConstants.KVoltage);
     coralShooter.configure(coralConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
   }
 

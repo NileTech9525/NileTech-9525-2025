@@ -36,7 +36,8 @@ public class Drivetrain extends SubsystemBase {
     motorRightRear.setCANTimeout(250);
 
     SparkMaxConfig config = new SparkMaxConfig();
-    config.voltageCompensation(12);
+    config.voltageCompensation(DrivetrainConstants.KVoltage);
+    config.openLoopRampRate(DrivetrainConstants.kDriveOpenRateLimit);
     config.smartCurrentLimit(DrivetrainConstants.kDrivetrainSafetyLimits);
 
     config.follow(motorLeftFront);
